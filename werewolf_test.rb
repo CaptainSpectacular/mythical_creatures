@@ -57,14 +57,14 @@ class WerewolfTest < Minitest::Test
   def test_is_not_hungry_by_default
 
     werewolf = Werewolf.new("David", "London")
-    assert_equal false, werewolf.hungry?
+    refute werewolf.hungry?
   end
 
   def test_becomes_hungry_after_changing_to_a_werewolf
 
     werewolf = Werewolf.new("David", "London")
     werewolf.change!
-    assert_equal true, werewolf.hungry?
+    assert werewolf.hungry?
 
   end
 
@@ -98,7 +98,7 @@ class WerewolfTest < Minitest::Test
     werewolf.change!
     werewolf.consume!(victim)
 
-    assert_equal false, werewolf.hungry?
+    refute werewolf.hungry?
   end
 
   def test_a_werewolf_who_has_consumed_a_victim_makes_the_victim_dead
