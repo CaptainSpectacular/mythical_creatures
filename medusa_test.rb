@@ -61,7 +61,7 @@ class MedusaTest < Minitest::Test
     medusa.stare(victim_3)
     medusa.stare(victim_4)
 
-    assert_equal false, victim.stoned?
+    refute victim.stoned?
   end
 
 end
