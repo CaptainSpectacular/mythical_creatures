@@ -10,19 +10,44 @@ class Werewolf
   end
 
   def human?
-    @form == "Human" ? true : false
+    @form == "Human"
   end
 
   def wolf?
-    !human?
+    @form == "Werewolf"
   end
 
   def change!
-    human? ? @form = "Werewolf" && @hungry = true : @form = "Human"
+    if human?
+      @form = "Werewolf"
+      @hungry = true
+    else
+      @form = "Human"
+    end
   end
 
   def hungry?
     @hungry
   end
 
+  def consume!(victim)
+    unless human?
+      @hungry = false
+      victim.status = :dead
+      "Victim consumed."
+    else
+    "Cannot eat in human form."
+    end
+  end
+
+
+
+end
+
+class Victim
+  attr_accessor :status
+
+  def initialize
+    @status = :alive
+  end
 end
