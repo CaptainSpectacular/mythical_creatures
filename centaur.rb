@@ -11,16 +11,19 @@ class Centaur
 
   def shoot
     @cranky += 1
-    (cranky? || laying?) ? "NO!" : "Twang!!!"
+    return "NO!" if (cranky? || laying?)
+    "Twang!!!"
   end
 
   def run
     @cranky += 1
-    (cranky? || laying?) ? "NO!" : "Clop clop clop clop!!!"
+    return "NO!" if (cranky? || laying?)
+    "Clop clop clop clop!!!"
   end
 
   def cranky?
-    @cranky >= 3 ? true : false
+    @cranky >= 3
+    
   end
 
   def standing?
@@ -28,7 +31,8 @@ class Centaur
   end
 
   def sleep
-    @standing == true ? "NO!" : @cranky = 0
+    return "NO!" if standing?
+    @cranky = 0 unless standing?
   end
 
   def lay_down
@@ -57,6 +61,5 @@ class Centaur
   def sick?
     @sick
   end
-
 
 end
